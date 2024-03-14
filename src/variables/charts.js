@@ -188,7 +188,6 @@ const chartExample4 = {
   },
 };
 
-let flag=0;
 const chartData = await fetchChartData();
 let chartExample1 = {
   data1: (canvas) => generateDataset(canvas, chartData.pHValues),
