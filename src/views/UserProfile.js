@@ -1,20 +1,3 @@
-/*!
-
-=========================================================
-* Black Dashboard React v1.2.2
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/black-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/black-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 
 // reactstrap components
@@ -49,7 +32,7 @@ function UserProfile() {
                       <FormGroup>
                         <label>Company (disabled)</label>
                         <Input
-                          defaultValue="Creative Code Inc."
+                          defaultValue="Aquametrics"
                           disabled
                           placeholder="Company"
                           type="text"
@@ -60,7 +43,7 @@ function UserProfile() {
                       <FormGroup>
                         <label>Username</label>
                         <Input
-                          defaultValue="michael23"
+                          defaultValue="srgk23"
                           placeholder="Username"
                           type="text"
                         />
@@ -71,7 +54,7 @@ function UserProfile() {
                         <label htmlFor="exampleInputEmail1">
                           Email address
                         </label>
-                        <Input placeholder="mike@email.com" type="email" />
+                        <Input placeholder="srgktl123@email.com" type="email" />
                       </FormGroup>
                     </Col>
                   </Row>
@@ -80,7 +63,7 @@ function UserProfile() {
                       <FormGroup>
                         <label>First Name</label>
                         <Input
-                          defaultValue="Mike"
+                          defaultValue="Sarang"
                           placeholder="Company"
                           type="text"
                         />
@@ -90,7 +73,7 @@ function UserProfile() {
                       <FormGroup>
                         <label>Last Name</label>
                         <Input
-                          defaultValue="Andrew"
+                          defaultValue="K"
                           placeholder="Last Name"
                           type="text"
                         />
@@ -102,7 +85,7 @@ function UserProfile() {
                       <FormGroup>
                         <label>Address</label>
                         <Input
-                          defaultValue="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
+                          defaultValue="Near Govt. Hospital Kozhikode"
                           placeholder="Home Address"
                           type="text"
                         />
@@ -114,7 +97,7 @@ function UserProfile() {
                       <FormGroup>
                         <label>City</label>
                         <Input
-                          defaultValue="Mike"
+                          defaultValue="Calicut"
                           placeholder="City"
                           type="text"
                         />
@@ -125,7 +108,7 @@ function UserProfile() {
                         <label>Country</label>
                         <Input
                           defaultValue="Andrew"
-                          placeholder="Country"
+                          placeholder="Yes"
                           type="text"
                         />
                       </FormGroup>
@@ -133,7 +116,7 @@ function UserProfile() {
                     <Col className="pl-md-1" md="4">
                       <FormGroup>
                         <label>Postal Code</label>
-                        <Input placeholder="ZIP Code" type="number" />
+                        <Input placeholder="67356" type="number" />
                       </FormGroup>
                     </Col>
                   </Row>
@@ -143,8 +126,7 @@ function UserProfile() {
                         <label>About Me</label>
                         <Input
                           cols="80"
-                          defaultValue="Lamborghini Mercy, Your chick she so thirsty, I'm in
-                            that two seat Lambo."
+                          defaultValue="Team Lead of Aquametrics"
                           placeholder="Here can be your description"
                           rows="4"
                           type="textarea"
@@ -174,16 +156,14 @@ function UserProfile() {
                     <img
                       alt="..."
                       className="avatar"
-                      src={require("assets/img/emilyz.jpg")}
+                      src={require("assets/img/image.png")}
                     />
-                    <h5 className="title">Mike Andrew</h5>
+                    <h5 className="title">Sarang K</h5>
                   </a>
                   <p className="description">Ceo/Co-Founder</p>
                 </div>
                 <div className="card-description">
-                  Do not be scared of the truth because we need to restart the
-                  human foundation in truth And I love you like Kanye loves
-                  Kanye I love Rick Owens’ bed design but the back is...
+                  Team Lead of Aquametrics
                 </div>
               </CardBody>
               <CardFooter>
