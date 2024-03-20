@@ -1,3 +1,4 @@
+
 const chart1_2_options = {
   maintainAspectRatio: false,
   legend: {
@@ -216,7 +217,6 @@ let chartExample4 = {
   options: chart3_4_options,
 }; // Initialize chartExample4
 
-console.log(findSuccessiveDifferences(chartData.pHValues))
 
 
-export { chartExample1, chartExample4 };
+export { chartExample1, chartExample4, chartData };

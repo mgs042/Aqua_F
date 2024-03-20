@@ -107,8 +107,8 @@ function UserProfile() {
                       <FormGroup>
                         <label>Country</label>
                         <Input
-                          defaultValue="Andrew"
-                          placeholder="Yes"
+                          defaultValue="India"
+                          placeholder="Country"
                           type="text"
                         />
                       </FormGroup>

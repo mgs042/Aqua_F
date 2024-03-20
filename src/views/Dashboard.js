@@ -6,6 +6,12 @@ import classNames from "classnames";
 import { Line} from "react-chartjs-2";
 
 import A from "../assets/img/A.png";
+import B from "../assets/img/B.png";
+import C from "../assets/img/C.png";
+import D from "../assets/img/D.png";
+import E from "../assets/img/E.png";
+
+
 
 
 // reactstrap components
@@ -34,7 +40,24 @@ import {
 import {
   chartExample1,
   chartExample4,
+  chartData,
 } from "variables/charts.js";
+
+function classifyWater(pH, DO, EC) {
+  if (pH >= 6.5 && pH <= 8.5 && DO >= 6 && EC <= 2250) {
+      return A; // Drinking Water Source without conventional treatment but after disinfection
+  } else if (pH >= 6.5 && pH <= 8.5 && DO >= 5 && DO < 6 && EC <= 2250) {
+      return B; // Outdoor bathing (Organised)
+  } else if (pH >= 6 && pH <= 9 && DO >= 4 && EC <= 2250) {
+      return C; // Drinking water source after conventional treatment and disinfection
+  } else if (pH >= 6.5 && pH <= 8.5 && DO >= 4) {
+      return D; // Propagation of Wildlife and Fisheries
+  } else if (pH >= 6 && pH <= 8.5 && EC <= 2250) {
+      return E; // Irrigation, Industrial Cooling, Controlled Waste disposal
+  } else {
+      return E;
+  }
+}
 
 function Dashboard(props) {
 
@@ -42,7 +65,11 @@ function Dashboard(props) {
   const setBgChartData = (name) => {
     setbigChartData(name);
   };
-  
+  console.log(chartExample1[bigChartData]);
+  let pH = chartData.pHValues[chartData.pHValues.length - 1];
+  let DO = chartData.DOValues[chartData.DOValues.length - 1];
+  let EC = chartData.TDSValues[chartData.TDSValues.length - 1];
+  let classificationImage = classifyWater(pH, DO, EC);
   return (
     <>
       <div className="content">
@@ -263,8 +290,13 @@ function Dashboard(props) {
                 <p className="card-category d-inline"> Current</p>
               </CardHeader>
               <CardBody>
-              <img src={A} alt="Image 1" style={{ display: 'block', margin: 'auto', maxHeight: '100%' , maxWidth: '150%'}} />
-              
+                
+
+                <img
+                    src={classificationImage}
+                    alt="Image"
+                    style={{ display: 'block', margin: 'auto', maxHeight: '100%', maxWidth: '150%' }}
+                />
               </CardBody>
             </Card>
           </Col>
@@ -288,43 +320,45 @@ function Dashboard(props) {
                   <tbody>
                     <tr>
                       <td>S001</td>
-                      <td>7.01</td>
-                      <td>25.00</td>
-                      <td>0.50</td>
-                      <td>1.25</td>
-                      <td>9.50</td>
+                      <td>{chartData.pHValues[chartData.pHValues.length - 1]}</td>
+                      <td>{chartData.tempValues[chartData.tempValues.length - 1]}</td>
+                      <td>{chartData.TDSValues[chartData.TDSValues.length - 1]}</td>
+                      <td>{chartData.turbidityValues[chartData.turbidityValues.length - 1]}</td>
+                      <td>{chartData.DOValues[chartData.DOValues.length - 1]}</td>
+                    </tr>
+
+                    <tr>
+                    <td>S001</td>
+                      <td>{chartData.pHValues[chartData.pHValues.length - 2]}</td>
+                      <td>{chartData.tempValues[chartData.tempValues.length - 2]}</td>
+                      <td>{chartData.TDSValues[chartData.TDSValues.length - 2]}</td>
+                      <td>{chartData.turbidityValues[chartData.turbidityValues.length - 2]}</td>
+                      <td>{chartData.DOValues[chartData.DOValues.length - 2]}</td>
                     </tr>
                     <tr>
-                      <td>S001</td>
-                      <td>7.01</td>
-                      <td>25.00</td>
-                      <td>0.50</td>
-                      <td>1.25</td>
-                      <td>9.50</td>
+                    <td>S001</td>
+                      <td>{chartData.pHValues[chartData.pHValues.length - 3]}</td>
+                      <td>{chartData.tempValues[chartData.tempValues.length - 3]}</td>
+                      <td>{chartData.TDSValues[chartData.TDSValues.length - 3]}</td>
+                      <td>{chartData.turbidityValues[chartData.turbidityValues.length - 3]}</td>
+                      <td>{chartData.DOValues[chartData.DOValues.length - 3]}</td>
                     </tr>
                     <tr>
-                      <td>S001</td>
-                      <td>7.01</td>
-                      <td>25.00</td>
-                      <td>0.50</td>
-                      <td>1.25</td>
-                      <td>9.50</td>
+                    <td>S001</td>
+                      <td>{chartData.pHValues[chartData.pHValues.length - 4]}</td>
+                      <td>{chartData.tempValues[chartData.tempValues.length - 4]}</td>
+                      <td>{chartData.TDSValues[chartData.TDSValues.length - 4]}</td>
+                      <td>{chartData.turbidityValues[chartData.turbidityValues.length - 4]}</td>
+                      <td>{chartData.DOValues[chartData.DOValues.length - 4]}</td>
                     </tr>
                     <tr>
-                      <td>S001</td>
-                      <td>7.01</td>
-                      <td>25.00</td>
-                      <td>0.50</td>
-                      <td>1.25</td>
-                      <td>9.50</td>
-                    </tr>
-                    <tr>
-                      <td>S001</td>
-                      <td>7.01</td>
-                      <td>25.00</td>
-                      <td>0.50</td>
-                      <td>1.25</td>
-                      <td>9.50</td>
+                    <td>S001</td>
+                      <td>{chartData.pHValues[chartData.pHValues.length - 5]}</td>
+                      <td>{chartData.tempValues[chartData.tempValues.length - 5]}</td>
+                      <td>{chartData.TDSValues[chartData.TDSValues.length - 5]}</td>
+                      <td>{chartData.turbidityValues[chartData.turbidityValues.length - 5]}</td>
+                      <td>{chartData.DOValues[chartData.DOValues.length - 5
+                      ]}</td>
                     </tr>
                     <tr>
                       <td>S001</td>
