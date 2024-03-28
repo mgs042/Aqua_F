@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // reactstrap components
 import {
@@ -12,6 +12,22 @@ import {
 } from "reactstrap";
 
 function Tables() {
+  const [sensorData, setSensorData] = useState([]);
+
+  useEffect(() => {
+    async function fetchSensorData() {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/list_sensor');
+        const data = await response.json();
+        setSensorData(data);
+      } catch (error) {
+        console.error('Error fetching sensor data:', error);
+      }
+    }
+
+    fetchSensorData();
+  }, []);
+
   return (
     <>
       <div className="content">
@@ -25,61 +41,28 @@ function Tables() {
                 <Table className="tablesorter" responsive>
                   <thead className="text-primary">
                     <tr>
-                      <th>Sensor id</th>
+                      <th>Sensor ID</th>
                       <th>Location</th>
-                      <th>Lattitude</th>
+                      <th>Latitude</th>
                       <th>Longitude</th>
+                      <th>Status</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>S001</td>
-                      <td>edapally canal</td>
-                      <td>246.184595</td>
-                      <td>4589.15454</td>
-                    </tr>
-                    <tr>
-                      <td>S001</td>
-                      <td>edapally canal</td>
-                      <td>246.184595</td>
-                      <td>4589.15454</td>
-                    </tr>
-                    <tr>
-                      <td>S001</td>
-                      <td>edapally canal</td>
-                      <td>246.184595</td>
-                      <td>4589.15454</td>
-                    </tr>
-                    <tr>
-                      <td>S001</td>
-                      <td>edapally canal</td>
-                      <td>246.184595</td>
-                      <td>4589.15454</td>
-                    </tr>
-                    <tr>
-                      <td>S001</td>
-                      <td>edapally canal</td>
-                      <td>246.184595</td>
-                      <td>4589.15454</td>
-                    </tr>
-                    <tr>
-                      <td>S001</td>
-                      <td>edapally canal</td>
-                      <td>246.184595</td>
-                      <td>4589.15454</td>
-                    </tr>
-                    <tr>
-                      <td>S001</td>
-                      <td>edapally canal</td>
-                      <td>246.184595</td>
-                      <td>4589.15454</td>
-                    </tr>
+                    {sensorData.map((entry, index) => (
+                      <tr key={index}>
+                        <td>{entry.sensor}</td>
+                        <td>{entry.location}</td>
+                        <td>{entry.lat}</td>
+                        <td>{entry.long}</td>
+                        <td>{entry.status}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </Table>
               </CardBody>
             </Card>
           </Col>
-          
         </Row>
       </div>
     </>

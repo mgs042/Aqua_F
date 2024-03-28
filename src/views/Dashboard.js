@@ -11,6 +11,8 @@ import C from "../assets/img/C.png";
 import D from "../assets/img/D.png";
 import E from "../assets/img/E.png";
 
+import NotificationAlert from "react-notification-alert";
+
 
 
 
@@ -59,20 +61,70 @@ function classifyWater(pH, DO, EC) {
   }
 }
 
+
+
+
+
+
 function Dashboard(props) {
 
   const [bigChartData, setbigChartData] = React.useState("data1");
   const setBgChartData = (name) => {
     setbigChartData(name);
   };
-  console.log(chartExample1[bigChartData]);
   let pH = chartData.pHValues[chartData.pHValues.length - 1];
   let DO = chartData.DOValues[chartData.DOValues.length - 1];
   let EC = chartData.TDSValues[chartData.TDSValues.length - 1];
+  let Turb = chartData.turbidityValues[chartData.turbidityValues.length - 1];
+  let Temp = chartData.tempValues[chartData.tempValues.length - 1];
+
+  const notificationAlertRef = React.useRef(null);
+  const notify = (place, param) => {
+    let message = '';
+    switch (param) {
+      case 'pH':
+        message = `Warning: pH value is outside the recommended range (6.5 - 8.5)`;
+        break;
+      case 'DO':
+        message = `Warning: Dissolved Oxygen (DO) level is below the recommended minimum (5.0 mg/L)`;
+        break;
+      case 'turbidity':
+        message = `Warning: Turbidity level is above the recommended maximum (5 NTU)`;
+        break;
+      case 'TDS':
+        message = `Warning: Total Dissolved Solids (TDS) level is above the recommended maximum (500 mg/L)`;
+        break;
+      case 'temperature':
+        message = `Warning: Water temperature is outside the recommended range (10°C - 25°C)`;
+        break;
+      default:
+        message = 'Unknown parameter';
+    }
+  
+    const options = {
+      place: place,
+      message: (
+        <div>
+          <div>{message}</div>
+        </div>
+      ),
+      type: 'danger',
+      icon: 'tim-icons icon-bell-55',
+      autoDismiss: 7,
+    };
+  
+    notificationAlertRef.current.notificationAlert(options);
+  };
+
+
   let classificationImage = classifyWater(pH, DO, EC);
+
   return (
     <>
       <div className="content">
+      <div className="react-notification-alert-container">
+          <NotificationAlert ref={notificationAlertRef} />
+        </div>
         <Row>
           <Col xs="12">
             <Card className="card-chart">
@@ -95,7 +147,13 @@ function Dashboard(props) {
                         color="info"
                         id="0"
                         size="sm"
-                        onClick={() => setBgChartData("data1")}
+                        onClick={() => {
+                          setBgChartData("data1");
+                          if (pH < 6.5 || pH > 8.5) {
+                            notify("br", "pH");
+                          }
+                        
+                        }}
                       >
                         <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                           pH
@@ -112,7 +170,13 @@ function Dashboard(props) {
                         className={classNames("btn-simple", {
                           active: bigChartData === "data2",
                         })}
-                        onClick={() => setBgChartData("data2")}
+                        onClick={() => {
+                          setBgChartData("data2");
+                          if (Temp < 10 || Temp> 25) {
+                            notify("br", "temperature");
+                          }
+                        
+                        }}
                       >
                         <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                           Temp
@@ -129,7 +193,13 @@ function Dashboard(props) {
                         className={classNames("btn-simple", {
                           active: bigChartData === "data3",
                         })}
-                        onClick={() => setBgChartData("data3")}
+                        onClick={() => {
+                          setBgChartData("data3");
+                          if (EC > 500) {
+                            notify("br", "TDS");
+                          }
+                        
+                        }}
                       >
                         <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                           TDS
@@ -146,8 +216,13 @@ function Dashboard(props) {
                         className={classNames("btn-simple", {
                           active: bigChartData === "data4",
                         })}
-                        onClick={() => setBgChartData("data4")}
-                      >
+                        onClick={() => {
+                          setBgChartData("data4");
+                          if (Turb > 5.0) {
+                            notify("br", "turbidity");
+                          }
+                        
+                        }}                      >
                         <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                           Turb
                         </span>
@@ -163,7 +238,13 @@ function Dashboard(props) {
                         className={classNames("btn-simple", {
                           active: bigChartData === "data5",
                         })}
-                        onClick={() => setBgChartData("data5")}
+                        onClick={() => {
+                          setBgChartData("data1");
+                          if (DO < 5.0) {
+                            notify("br", "DO");
+                          }
+                        
+                        }}
                       >
                         <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                           DO
