@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && gulp licenses",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
@@ -45,8 +45,6 @@
     "reactstrap": "8.10.1"
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1",
-    "gulp": "^5.0.0",
     "typescript": "5.0.4"
   },
   "overrides": {
