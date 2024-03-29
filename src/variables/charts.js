@@ -139,7 +139,7 @@ function generateDataset1(canvas, data) {
 
 async function fetchChartData() {
   try {
-    const response = await fetch('http://127.0.0.1:5000/chart_query');
+    const response = await fetch('http://ec2-13-239-43-135.ap-southeast-2.compute.amazonaws.com:8000//chart_query');
     const data = await response.json();
 
     return {

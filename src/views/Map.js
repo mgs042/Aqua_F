@@ -3,8 +3,26 @@ import React from "react";
 // reactstrap components
 import { Card, CardHeader, CardBody, Row, Col } from "reactstrap";
 
+
+
+
 const MapWrapper = () => {
   const mapRef = React.useRef(null);
+  const [markers, setMarkers] = React.useState([]);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://ec2-13-239-43-135.ap-southeast-2.compute.amazonaws.com:8000//list_sensor");
+        const data = await response.json();
+        setMarkers(data);
+      } catch (error) {
+        console.error("Error fetching marker data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   React.useEffect(() => {
     let google = window.google;
     let map = mapRef.current;
@@ -262,23 +280,29 @@ const MapWrapper = () => {
     map = new google.maps.Map(document.getElementById('map'), mapOptions
       );
 
-    const marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      animation: google.maps.Animation.DROP,
-      title: "CUSAT",
-    });
-
-    const contentString ="S001";
-
-    const infowindow = new google.maps.InfoWindow({
-      content: contentString,
-    });
-
-    google.maps.event.addListener(marker, "click", function () {
-      infowindow.open(map, marker);
-    });
-  }, []);
+      markers.forEach((markerData) => {
+        const { lat, long, location, sensor } = markerData;
+        const markerLatLng = new google.maps.LatLng(lat, long);
+        const marker = new google.maps.Marker({
+          position: markerLatLng,
+          map: map,
+          animation: google.maps.Animation.DROP,
+          title: location,
+        });
+        
+        
+        const contentString = sensor+"--"+location;
+  
+        const infowindow = new google.maps.InfoWindow({
+          content: contentString,
+        });
+  
+        google.maps.event.addListener(marker, "click", function () {
+          infowindow.open(map, marker);
+        });
+      });
+    }, [markers]);
+  
   return <div ref={mapRef} />;
 };
 

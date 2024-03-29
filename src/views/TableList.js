@@ -17,7 +17,7 @@ function Tables() {
   useEffect(() => {
     async function fetchSensorData() {
       try {
-        const response = await fetch('http://127.0.0.1:5000/list_sensor');
+        const response = await fetch('http://ec2-13-239-43-135.ap-southeast-2.compute.amazonaws.com:8000//list_sensor');
         const data = await response.json();
         setSensorData(data);
       } catch (error) {
