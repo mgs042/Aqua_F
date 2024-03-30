@@ -239,7 +239,7 @@ function Dashboard(props) {
                           active: bigChartData === "data5",
                         })}
                         onClick={() => {
-                          setBgChartData("data1");
+                          setBgChartData("data5");
                           if (DO < 5.0) {
                             notify("br", "DO");
                           }
