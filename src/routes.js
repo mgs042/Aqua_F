@@ -15,7 +15,7 @@ var routes = [
   {
     path: "/map",
     name: "Map",
-    icon: "tim-icons icon-pin",
+    icon: "tim-icons icon-square-pin",
     component: <Map />,
     layout: "/admin",
   },
@@ -29,7 +29,7 @@ var routes = [
   {
     path: "/tables",
     name: "Sensor List",
-    icon: "tim-icons icon-puzzle-10",
+    icon: "tim-icons icon-notes",
     component: <TableList />,
     layout: "/admin",
   },

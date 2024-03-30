@@ -155,11 +155,8 @@ function Dashboard(props) {
                         
                         }}
                       >
-                        <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                        <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block d-block d-sm-none">
                           pH
-                        </span>
-                        <span className="d-block d-sm-none">
-                          <i className="tim-icons icon-single-02" />
                         </span>
                       </Button>
                       <Button
@@ -178,12 +175,10 @@ function Dashboard(props) {
                         
                         }}
                       >
-                        <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                        <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block d-block d-sm-none">
                           Temp
                         </span>
-                        <span className="d-block d-sm-none">
-                          <i className="tim-icons icon-gift-2" />
-                        </span>
+
                       </Button>
                       <Button
                         color="info"
@@ -201,12 +196,10 @@ function Dashboard(props) {
                         
                         }}
                       >
-                        <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                        <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block d-block d-sm-none">
                           TDS
                         </span>
-                        <span className="d-block d-sm-none">
-                          <i className="tim-icons icon-tap-02" />
-                        </span>
+                        
                       </Button>
                       <Button
                         color="info"
@@ -223,12 +216,10 @@ function Dashboard(props) {
                           }
                         
                         }}                      >
-                        <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                        <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block d-block d-sm-none">
                           Turb
                         </span>
-                        <span className="d-block d-sm-none">
-                          <i className="tim-icons icon-tap-02" />
-                        </span>
+                      
                       </Button>
                       <Button
                         color="info"
@@ -246,12 +237,10 @@ function Dashboard(props) {
                         
                         }}
                       >
-                        <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                        <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block d-block d-sm-none">
                           DO
                         </span>
-                        <span className="d-block d-sm-none">
-                          <i className="tim-icons icon-tap-02" />
-                        </span>
+
                       </Button>
                     </ButtonGroup>
                   </Col>
@@ -376,7 +365,7 @@ function Dashboard(props) {
                 <img
                     src={classificationImage}
                     alt="Image"
-                    style={{ display: 'block', margin: 'auto', maxHeight: '100%', maxWidth: '150%' }}
+                    style={{ display: 'block', margin: 'auto', maxHeight: '100%', maxWidth: '100%' }}
                 />
               </CardBody>
             </Card>
