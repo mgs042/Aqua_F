@@ -139,7 +139,7 @@ function generateDataset1(canvas, data) {
 
 async function fetchChartData() {
   try {
-    const response = await fetch('http://ec2-13-239-43-135.ap-southeast-2.compute.amazonaws.com:8000//chart_query');
+    const response = await fetch('https://ec2-13-239-43-135.ap-southeast-2.compute.amazonaws.com/chart_query');
     const data = await response.json();
 
     return {
@@ -168,7 +168,7 @@ function generateDataset2(canvas, data) {
       labels: ["JUL", "AUG", "SEP", "OCT", "NOV"],
       datasets: [
         {
-          label: "My First dataset",
+          label: "Deviation Data",
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: "#00d6b4",
