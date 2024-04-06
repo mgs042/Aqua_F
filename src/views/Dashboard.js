@@ -5,11 +5,16 @@ import classNames from "classnames";
 // react plugin used to create charts
 import { Line} from "react-chartjs-2";
 
+import Select from 'react-select'
+
+
 import A from "../assets/img/A.png";
 import B from "../assets/img/B.png";
 import C from "../assets/img/C.png";
 import D from "../assets/img/D.png";
 import E from "../assets/img/E.png";
+
+import audio from "../assets/audio/alert_sound.mp3"
 
 import NotificationAlert from "react-notification-alert";
 
@@ -61,9 +66,11 @@ function classifyWater(pH, DO, EC) {
   }
 }
 
-
-
-
+const options = [
+  { value: 'S001', label: 'S001' },
+  { value: 'S002', label: 'S002',isdisabled: true },
+  { value: 'S003', label: 'S003',isdisabled: true }
+]
 
 
 function Dashboard(props) {
@@ -112,12 +119,24 @@ function Dashboard(props) {
       icon: 'tim-icons icon-bell-55',
       autoDismiss: 7,
     };
-  
+    // Create a new Audio object with the URL of the sound file
+    var alertSound = new Audio(audio);
+
+    // Play the sound
+    alertSound.play();
+
+    // Stop the sound after 2 seconds
+    setTimeout(function() {
+      alertSound.pause();
+      alertSound.currentTime = 0;
+    }, 2000);
+
     notificationAlertRef.current.notificationAlert(options);
   };
 
 
   let classificationImage = classifyWater(pH, DO, EC);
+
 
   return (
     <>
@@ -126,15 +145,52 @@ function Dashboard(props) {
           <NotificationAlert ref={notificationAlertRef} />
         </div>
         <Row>
+
           <Col xs="12">
             <Card className="card-chart">
               <CardHeader>
+                
                 <Row>
-                  <Col className="text-left" sm="6">
-                    <h5 className="card-category">Sensor</h5>
+                  <Col className="text-left" sm="2">
                     <CardTitle tag="h2">Sensor Data</CardTitle>
                   </Col>
-                  <Col sm="6">
+                  <Col sm="2">
+                     <Select  options={options}
+                        isOptionDisabled={(option) => option.isdisabled}
+                        menuPortalTarget={document.body}
+                        menuPosition="fixed"
+                        theme={(theme) => ({
+                          ...theme,
+                          borderRadius: 10,
+                          colors: {
+                            ...theme.colors,
+                            //after select dropdown option
+                            primary50: "gray",
+                            //Border and Background dropdown color
+                            primary: "#247cf5",
+                            //Background hover dropdown color
+                            primary25: "#46aefd",
+                            //Background color
+                            neutral0: "white",
+                            //Border before select
+                            neutral20: "gray",
+                            //Hover border
+                            neutral30: "#3e3e3e",
+                            //No options color
+                            neutral40: "#247cf5",
+                            //Select color
+                            neutral50: "black",
+                            //arrow icon when click select
+                            neutral60: "#42FFDD",
+                            //Text color
+                            neutral80: "#247cf5",
+                          },
+                        })}
+                      />
+   
+                  </Col>
+                  <Col sm="8">
+
                     <ButtonGroup
                       className="btn-group-toggle float-right"
                       data-toggle="buttons"
@@ -431,20 +487,22 @@ function Dashboard(props) {
                       ]}</td>
                     </tr>
                     <tr>
-                      <td>S001</td>
-                      <td>7.01</td>
-                      <td>25.00</td>
-                      <td>0.50</td>
-                      <td>1.25</td>
-                      <td>9.50</td>
+                    <td>S001</td>
+                      <td>{chartData.pHValues[chartData.pHValues.length - 6]}</td>
+                      <td>{chartData.tempValues[chartData.tempValues.length - 6]}</td>
+                      <td>{chartData.TDSValues[chartData.TDSValues.length - 6]}</td>
+                      <td>{chartData.turbidityValues[chartData.turbidityValues.length - 6]}</td>
+                      <td>{chartData.DOValues[chartData.DOValues.length - 6
+                      ]}</td>
                     </tr>
                     <tr>
-                      <td>S001</td>
-                      <td>7.01</td>
-                      <td>25.00</td>
-                      <td>0.50</td>
-                      <td>1.25</td>
-                      <td>9.50</td>
+                    <td>S001</td>
+                      <td>{chartData.pHValues[chartData.pHValues.length - 7]}</td>
+                      <td>{chartData.tempValues[chartData.tempValues.length - 7]}</td>
+                      <td>{chartData.TDSValues[chartData.TDSValues.length - 7]}</td>
+                      <td>{chartData.turbidityValues[chartData.turbidityValues.length - 7]}</td>
+                      <td>{chartData.DOValues[chartData.DOValues.length - 7
+                      ]}</td>
                     </tr>
                   </tbody>
                 </Table>
