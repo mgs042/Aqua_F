@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col, Card, CardHeader, CardBody, CardTitle } from 'reactstrap';
 import { Bar, Line } from 'react-chartjs-2';
 import { chartExample2, chartExample3 } from 'variables/charts'; // Import chart data and options
-
+import CSVDownloader from './CSVdownloader';
 const Analytics = () => {
   return (
     <div className="content">
@@ -38,6 +38,11 @@ const Analytics = () => {
                 </CardBody>
               </Card>
             </Col>
+          </Row>
+          <Row>
+            <Col lg="5"></Col>
+            <Col lg="2"><CSVDownloader /></Col>
+            <Col lg="5"></Col>
           </Row>
 
     </div>
