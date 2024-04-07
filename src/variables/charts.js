@@ -155,6 +155,18 @@ async function fetchChartData() {
   }
 }
 
+async function fetchAnalyticsData() {
+  try {
+    const response = await fetch('http://192.168.210.26:80/analytics');
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error('Error fetching chart data:', error);
+    throw error;
+  }
+}
+
 function generateDataset2(canvas, data) {
     let ctx = canvas.getContext("2d");
 
@@ -198,6 +210,8 @@ function findSuccessiveDifferences(arr) {
 
 
 const chartData = await fetchChartData();
+const analyticsData = await fetchAnalyticsData();
+console.log(analyticsData);
 
 let chartExample1 = {
   data1: (canvas) => generateDataset1(canvas, chartData.pHValues),
@@ -217,6 +231,14 @@ let chartExample4 = {
   options: chart3_4_options,
 }; // Initialize chartExample4
 
+let chartExample3 = {
+  data1: (canvas) => generateDataset2(canvas, analyticsData.anomalies),
+  options: chart3_4_options,
+};
 
+let chartExample2 = {
+  data1: (canvas) => generateDataset2(canvas, analyticsData.predictions),
+  options: chart3_4_options,
+};
 
-export { chartExample1, chartExample4, chartData };
+export { chartExample1, chartExample4, chartData, chartExample2, chartExample3};

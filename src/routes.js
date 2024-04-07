@@ -3,7 +3,7 @@ import Dashboard from "views/Dashboard.js";
 import Map from "views/Map.js";
 import TableList from "views/TableList.js";
 import UserProfile from "views/UserProfile.js";
-
+import Analytics from "views/Analytics.js"
 var routes = [
   {
     path: "/dashboard",
@@ -33,6 +33,12 @@ var routes = [
     component: <TableList />,
     layout: "/admin",
   },
-
+  {
+    path: "/Analytics",
+    name: "Analytics",
+    icon: "tim-icons icon-align-center",
+    component: <Analytics />,
+    layout: "/admin",
+  },
 ];
 export default routes;
