@@ -36,7 +36,7 @@ var routes = [
   {
     path: "/Analytics",
     name: "Analytics",
-    icon: "tim-icons icon-align-center",
+    icon: "tim-icons icon-puzzle-10",
     component: <Analytics />,
     layout: "/admin",
   },

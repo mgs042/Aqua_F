@@ -10,7 +10,7 @@ const Analytics = () => {
             <Col lg="6">
               <Card className="card-chart">
                 <CardHeader>
-                  <CardTitle tag="h4">Chart 1</CardTitle>
+                  <CardTitle tag="h4">Classification</CardTitle>
                 </CardHeader>
                 <CardBody>
                   <div className="chart-area">
@@ -26,7 +26,7 @@ const Analytics = () => {
             <Col lg="6">
               <Card className="card-chart">
                 <CardHeader>
-                  <CardTitle tag="h4">Chart 2</CardTitle>
+                  <CardTitle tag="h4">Anomaly Detection</CardTitle>
                 </CardHeader>
                 <CardBody>
                   <div className="chart-area">
