@@ -40,9 +40,9 @@ const Analytics = () => {
             </Col>
           </Row>
           <Row>
-            <Col lg="5"></Col>
-            <Col lg="2"><CSVDownloader /></Col>
-            <Col lg="5"></Col>
+            <Col lg="5" sm="5"></Col>
+            <Col lg="2" sm="2"><CSVDownloader /></Col>
+            <Col lg="5" sm="5"></Col>
           </Row>
 
     </div>
