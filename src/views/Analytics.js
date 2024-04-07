@@ -14,7 +14,7 @@ const Analytics = () => {
                 </CardHeader>
                 <CardBody>
                   <div className="chart-area">
-                  <Line
+                  <Bar
                     data={chartExample2.data1}
                     options={chartExample2.options}
                   />

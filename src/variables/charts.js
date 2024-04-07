@@ -102,18 +102,18 @@ function generateDataset1(canvas, data) {
 
   return {
     labels: [
-      "JAN",
-      "FEB",
-      "MAR",
-      "APR",
-      "MAY",
-      "JUN",
-      "JUL",
-      "AUG",
-      "SEP",
-      "OCT",
-      "NOV",
-      "DEC",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
     ],
     datasets: [
       {
@@ -157,7 +157,7 @@ async function fetchChartData() {
 
 async function fetchAnalyticsData() {
   try {
-    const response = await fetch('http://192.168.210.26:80/analytics');
+    const response = await fetch('https://ec2-13-239-43-135.ap-southeast-2.compute.amazonaws.com/analytics');
     const data = await response.json();
 
     return data;
@@ -177,7 +177,7 @@ function generateDataset2(canvas, data) {
     gradientStroke.addColorStop(0, "rgba(66,134,121,0)"); //green colors
 
     return {
-      labels: ["JUL", "AUG", "SEP", "OCT", "NOV"],
+      labels: ["1", "2", "3", "4", "5"],
       datasets: [
         {
           label: "Deviation Data",
@@ -211,6 +211,7 @@ function findSuccessiveDifferences(arr) {
 
 const chartData = await fetchChartData();
 const analyticsData = await fetchAnalyticsData();
+
 console.log(analyticsData);
 
 let chartExample1 = {
